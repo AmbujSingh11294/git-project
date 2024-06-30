@@ -1,0 +1,199 @@
+#Q1. Define a class to represent a bank account.
+
+class bank_acc():
+
+    def __init__(self,name,acc_number,acc_type,balance):
+        self.n=name
+        self.an=acc_number
+        self.at=acc_type
+        self.b=balance
+        
+
+    def new_cust(self):
+        print('Enter the details of New Customer')
+        self.n = input('Enter the new name: ')
+        self.an = int(input('Enter the Account Number of New Customer: '))
+        self.at = input('Enter the Account type of New Customer (Current/Savings): ')
+        self.b = int(input('Enter the balance Amount: '))
+
+    def deposit(self):
+        amount= int(input('Enter the amount to be Deposited: '))
+        self.b = self.b+amount
+        print(f'Amount {amount}₹ has been deposited in your account\n'
+               f'Your current balance is {self.b}₹')
+
+    def withdrawal(self):
+        amount1=int(input('Enter the amount to be Withdraw: '))
+        remain= self.b-amount1
+        if self.b > amount1:
+            print(f' Amount {amount1}₹ has been withdrawn from your account\n'
+                    f'Your current balance is {remain}₹')
+        else:
+            print('Insufficient Balance')
+
+
+    def display(self):
+        print(f'Name of Account Holder: {self.n}')
+        print(f'Account Number : {self.an}')
+        print(f'Account Type : {self.at}')
+        print(f'Account Balance : {self.b}₹')
+
+    def exit(self):
+        print('Exit')
+
+
+
+        
+b=bank_acc('xys',123,'current',2333)
+while True:
+    
+    print('Enter your choice number from one of the below options:')
+    print(' 1.New Customer\n','2.Deposit\n','3.Withdrawal\n','4.Display Details\n','5.Exit')
+    a=int(input('Enter your choice number: '))
+
+    if a==1:
+        b.new_cust()
+    elif a==2:
+        b.deposit()
+    elif a==3:
+        b.withdrawal()
+    elif a==4:
+        b.display()
+    else:
+        b.exit()
+        break
+
+
+
+output :
+i have put the screen shot of the output.
+Thank you!!
+
+
+
+
+
+
+#Q2 Write program to create a base class staff with code and name.
+
+
+class staff:
+
+    def __init__(self,code,name):
+        self.code=code
+        self.name=name
+
+    def display_staff_info(self):
+        print('Staff Code: ',self.code)
+        print('Staff Name: ',self.name)
+        
+
+
+class teacher(staff):
+
+    def __init__(self,sub,pub):
+        super().__init__(code,name)
+        self.subject=sub
+        self.publication=pub
+
+    def display_teacher_info(self):
+        super().display_staff_info()
+        print('Subject Name: ',self.subject)
+        print('Name of Publication: ',self.publication)
+
+class typist(staff):
+
+    def __init__(self,speed,salary):
+        super().__init__(code,name)
+        self.speed=speed
+        self.salary=salary
+        
+    def display_typist_info(self):
+        super().display_staff_info()
+
+        print('Typing Speed: ',self.speed)
+        
+
+
+        
+
+class officer(staff):
+
+    def __init__(self,grade):
+        super().__init__(code,name)
+        self.grade=grade
+
+    def display_officer_info(self):
+
+        super().display_staff_info()
+        print('Grade of the Officer: ',self.grade)
+
+
+class regular_typist(typist):
+
+    def __regular_typist_info__(self):
+        super().staff_info(code,name)
+        super().typist_info(speed,salary)
+
+    def display_rt(self):
+        super().display_typist_info()
+        print('Salary of the Regular Typist: ',self.salary)
+
+        
+
+class casual_typist(typist):
+
+    def __casual_typist_info__(self):
+        super().staff_info(code,name)
+        super().typist_info(speed,salary)
+        
+    def display_ct(self):
+        super().display_typist_info()
+        print('Daily Wages of the Casual Typist: ',self.salary)
+
+while True:
+    print("""\nPlease choose from the below option (1-5):
+    1.Teacher
+    2.Officer
+    3.Regular Typist
+    4.Casual typist
+    5.Exit
+""")
+    choice=int(input("Enter your choice:"))
+    print()
+    if choice in [5,"exit","EXIT","Q","q"]:
+        print(" Thank You!!")
+        break
+    code=int(input("\tEnter Staff Code:"))
+    name=input("\tEnter Name:")
+ 
+    if choice ==1:
+        sub=input("\tEnter Subject:")
+        pub=input("\tEnter Publication:")
+        t1=teacher(sub,pub)
+        t1.display_teacher_info()
+
+    elif choice == 2:
+        grade=input("\tEnter Grade:")
+        off1=officer(grade)
+        off1.display_officer_info()
+        
+    elif choice == 3 or choice == 4:
+        speed=int(input("\tEnter Speed (in wpm):"))
+ 
+        if choice == 3:
+            salary=int(input("\tEnter Salary (in Rs.):"))
+            reg=regular_typist(speed,salary)
+            reg.display_rt()
+        else:
+            wages=int(input("\tEnter Wages (in Rs.):"))
+            w1=casual_typist(speed,salary)
+            w1.display_ct()
+    print("-"*50)
+
+
+
+
+output:
+i have put the screen shots of the output.
+thank you!!
